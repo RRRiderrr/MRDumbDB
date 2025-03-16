@@ -1,7 +1,7 @@
-// ID вашей таблицы Google Sheets
+// ID таблицы в Google Sheets
 const spreadsheetId = "1XsEzpmbQv4cFJjAgfROMPD7TEOy_gn22_IaPje4ZSRw";
 
-// Ваш API-ключ Google (как указано)
+// Ваш API-ключ (включённый Google Sheets API)
 const apiKey = "AIzaSyAAahivxgg6dlHcjc26wF326qYg2fXXrqw";
 
 // Диапазон листа "Marvel Rivals" (A2:H1000)
@@ -20,17 +20,20 @@ function fetchPlayers() {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // Предположим, в листе столбцы идут:
+      // Предположим, столбцы идут так:
       // 0: timestamp
       // 1: email
       // 2: nickname
-      // 3: role
+      // 3: role (Vanguard, Duelist, Strategist)
       // 4: situation
-      // 5: rank
+      // 5: rank (Bronze, Silver, ...)
       // 6: replayCode
       // 7: status
       players = (data.values || [])
-        .filter((row) => row[2]) // у кого есть ник
+        // Убираем игроков без никнейма:
+        .filter((row) => row[2])
+        // Убираем игроков без статуса:
+        .filter((row) => row[7])
         .map((row, index) => ({
           id: index + 1,
           timestamp: row[0] || "",
@@ -52,7 +55,7 @@ function fetchPlayers() {
     });
 }
 
-// Отображение списка на текущей странице
+// Отображаем список игроков (только те, у кого есть status)
 function displayPlayerList() {
   const list = document.getElementById("playerList");
   list.innerHTML = "";
@@ -130,26 +133,24 @@ function createPaginationDots() {
   return span;
 }
 
-// Отображение деталей (правая колонка)
+// Детальная карточка (правая колонка)
 function displayPlayerDetails(player) {
   const details = document.getElementById("detailsContainer");
 
-  // Обновляем URL
+  // Обновляем URL (для прямых ссылок)
   const newUrl = new URL(window.location);
   newUrl.searchParams.set("player", player.nickname);
   newUrl.searchParams.set("id", player.id);
   history.pushState(null, null, newUrl.toString());
 
-  // Пути к иконкам
+  // Пути к иконкам (ранг/роль)
   const rankImagesPath = "images/ranks/";
   const roleImagesPath = "images/roles/";
 
-  // Одна иконка ранга
   const rankImage = player.rank ? `${rankImagesPath}${player.rank}.png` : "";
-  // Иконка роли
   const roleImage = player.role ? `${roleImagesPath}${player.role}.png` : "";
 
-  // Поиск YouTube-ссылки
+  // YouTube-ссылка в статусе?
   const youtubeRegex =
     /https?:\/\/(?:www\.)?youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)|https?:\/\/youtu\.be\/([a-zA-Z0-9_-]+)/;
   const match = player.status?.match(youtubeRegex);
@@ -169,7 +170,7 @@ function displayPlayerDetails(player) {
     `;
   }
 
-  // HTML для правой колонки
+  // HTML для карточки
   details.innerHTML = `
     <div class="nickname-container">
       <span class="nickname">${player.nickname}</span>
@@ -182,11 +183,13 @@ function displayPlayerDetails(player) {
       </div>
     </div>
     <div class="role-container">
-      ${
-        roleImage
-          ? `<img src="${roleImage}" alt="${player.role}" class="role-icon" title="${player.role}">`
-          : ""
-      }
+      <div class="role-icon">
+        ${
+          roleImage
+            ? `<img src="${roleImage}" alt="${player.role}" title="${player.role}">`
+            : ""
+        }
+      </div>
     </div>
     <p><strong>Situation:</strong> ${player.situation}</p>
     <p><strong>Status:</strong> ${cleanStatus}</p>
@@ -224,7 +227,7 @@ function searchPlayer() {
   }
 }
 
-// Проверка URL-параметров
+// Проверка URL-параметров (чтобы, если player=..., сразу показать его)
 function checkUrlParams() {
   const params = new URLSearchParams(window.location.search);
   const nickname = params.get("player");
@@ -239,7 +242,7 @@ function checkUrlParams() {
   }
 }
 
-// Инициализация при загрузке
+// Инициализация
 window.onload = () => {
   fetchPlayers();
 };
