@@ -8,14 +8,12 @@
   <link rel="icon" type="image/png" href="images/rivals-logo.png" />
 </head>
 <body>
-  <!-- Шапка (тёмная полоса сверху) -->
+  <!-- Шапка (header) -->
   <header>
     <div class="logo">
-      <!-- Логотип -->
       <img src="images/rivals-logo.png" alt="Marvel Rivals Logo" class="logo-icon" />
       DumbDB
     </div>
-    <!-- Поисковое поле -->
     <input
       id="search"
       type="text"
@@ -24,23 +22,23 @@
     />
   </header>
 
-  <!-- Двухколоночная структура -->
+  <!-- Двухколоночная структура: список + карточка -->
   <main>
-    <!-- Левая колонка: список игроков + пагинация -->
+    <!-- Левая колонка (список + пагинация) -->
     <div class="player-list">
       <h2>Player List</h2>
       <ul id="playerList"></ul>
       <div id="pagination" class="pagination"></div>
     </div>
 
-    <!-- Правая колонка: карточка деталей -->
+    <!-- Правая колонка (детали) -->
     <div class="player-details" id="playerDetails">
       <h2>Player Details</h2>
       <div id="detailsContainer">Select a player to see details.</div>
     </div>
   </main>
 
-  <!-- Кнопка в правом нижнем углу -->
+  <!-- Кнопка "Publish Dumbass" в правом нижнем углу -->
   <a
     href="https://forms.gle/WU14dkTzKLREYG8a9"
     target="_blank"
