@@ -1,4 +1,4 @@
-/* Сброс отступов */
+/* Сброс отступов и базовая модель коробки */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
 
 /* Шапка (тёмная панель) */
 header {
-  background: #1f1f28; 
+  background: #1f1f28;
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -45,14 +45,14 @@ header {
   outline: none;
 }
 
-/* Две колонки (список слева, карточка справа) */
+/* Две колонки */
 main {
   display: flex;
   padding: 20px;
   gap: 20px;
 }
 
-/* Левая колонка: список и пагинация */
+/* Левая колонка: список + пагинация */
 .player-list {
   width: 30%;
   background: #f0f2f5;
@@ -77,7 +77,7 @@ main {
   margin: 0;
 }
 
-/* Элемент списка */
+/* Элементы списка */
 .player-list li {
   background: #ffffff;
   margin-bottom: 8px;
@@ -86,7 +86,7 @@ main {
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
   font-size: 1rem;
-  /* text-transform: uppercase; <-- если нужен капс, раскомментируйте */
+  /* text-transform: uppercase; <-- включите, если нужен капс */
 }
 
 .player-list li:hover {
@@ -149,7 +149,7 @@ main {
   border-radius: 8px;
 }
 
-/* Внутреннее содержимое карточки */
+/* Содержимое карточки */
 #detailsContainer {
   background: #ffffff;
   border-radius: 8px;
@@ -159,7 +159,7 @@ main {
   flex: 1;
 }
 
-/* Заголовок (никнейм) + иконка ранга */
+/* Верхняя часть: никнейм + ранг */
 .nickname-container {
   display: flex;
   align-items: center;
@@ -173,16 +173,15 @@ main {
   margin-right: 15px;
 }
 
-/* Увеличенный ранг */
+/* Ранг: крупная иконка */
 .rank-icon {
   width: 220px;
   height: 220px;
   margin-right: 10px;
-  /* Добавляем плавную анимацию увеличения */
   transition: transform 0.3s ease;
 }
 
-/* Блок для иконки роли */
+/* Контейнер для роли */
 .role-container {
   margin-bottom: 15px;
   display: flex;
@@ -190,7 +189,7 @@ main {
   gap: 10px;
 }
 
-/* Тёмный круг под белую иконку роли */
+/* Тёмный круг для белой иконки роли */
 .role-icon {
   width: 60px; 
   height: 60px;
@@ -200,7 +199,6 @@ main {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 4px rgba(0,0,0,0.4);
-  /* Плавная анимация увеличения */
   transition: transform 0.3s ease;
 }
 
@@ -210,13 +208,13 @@ main {
   height: auto;
 }
 
-/* При наведении на ранг или роль — лёгкое увеличение */
+/* Ховер-эффект (увеличение) для ранга и роли */
 .rank-icon:hover,
 .role-icon:hover {
   transform: scale(1.1);
 }
 
-/* Параметры Situation / Status */
+/* Параметры (Situation / Status) */
 #detailsContainer p {
   margin: 10px 0;
   font-size: 1rem;
@@ -227,7 +225,7 @@ main {
   color: #2f3241;
 }
 
-/* YouTube */
+/* YouTube-встроенный плеер */
 .youtube-container {
   margin-top: 20px;
   text-align: center;
