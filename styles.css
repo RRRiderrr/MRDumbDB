@@ -5,8 +5,7 @@
   box-sizing: border-box;
 }
 
-/* Фон страницы: светло-голубовато-серый (как в ваших скриншотах).
-   Цвет текста по умолчанию — чёрный. */
+/* Фон страницы: светло-голубовато-серый */
 body {
   font-family: Arial, sans-serif;
   background: #d7deeb;
@@ -46,7 +45,7 @@ header {
   outline: none;
 }
 
-/* Две колонки: слева список, справа карточка. Используем flex. */
+/* Основная область: две колонки */
 main {
   display: flex;
   padding: 20px;
@@ -56,9 +55,9 @@ main {
 /* Левая колонка: список игроков + пагинация */
 .player-list {
   width: 30%;
-  background: #f0f2f5; 
+  background: #f0f2f5;
   border-radius: 8px;
-  min-height: 70vh; /* Можно подогнать под нужды */
+  min-height: 70vh;
   position: relative; /* для позиционирования пагинации */
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -67,13 +66,13 @@ main {
 .player-list h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
-  background: #2f3241; 
+  background: #2f3241;
   color: #fff;
   padding: 10px;
   border-radius: 8px 8px 0 0; /* Скругление верхних углов */
 }
 
-/* Список ul */
+/* Список (ul) */
 .player-list ul {
   list-style-type: none;
   padding: 10px;
@@ -82,14 +81,14 @@ main {
 
 /* Элемент списка (одна запись игрока) */
 .player-list li {
-  background: #ffffff; 
+  background: #ffffff;
   margin-bottom: 8px;
   padding: 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.3s ease;
   font-size: 1rem;
-  /* text-transform: uppercase; <-- включайте при желании */
+  /* text-transform: uppercase; <-- включайте, если нужен капс */
 }
 
 .player-list li:hover {
@@ -97,7 +96,7 @@ main {
   transform: scale(1.02);
 }
 
-/* Пагинация (внизу списка) */
+/* Пагинация внизу списка */
 .pagination {
   position: absolute;
   bottom: 10px;
@@ -133,7 +132,7 @@ main {
 
 /* Правая колонка: карточка игрока */
 .player-details {
-  flex: 1; /* Заполнить оставшееся пространство */
+  flex: 1;
   background: #f0f2f5;
   border-radius: 8px;
   min-height: 70vh;
@@ -143,7 +142,6 @@ main {
   flex-direction: column;
 }
 
-/* Заголовок в правой колонке */
 .player-details h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
@@ -160,7 +158,7 @@ main {
   padding: 20px;
   color: #000;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-  flex: 1; /* Чтобы заполнить оставшееся место */
+  flex: 1; /* чтобы растягивалось */
 }
 
 /* Верхняя часть карточки: никнейм + иконка ранга */
@@ -176,38 +174,45 @@ main {
   color: #2f3241;
 }
 
-/* Откладываем ранг правее */
+/* Контейнер рангов, небольшой отступ */
 .ranks {
   margin-left: 15px;
 }
 
-/* Увеличиваем иконку ранга */
+/* Увеличиваем иконку ранга (в "несколько раз") */
 .rank-icon {
-  width: 100px;
-  height: 100px;
+  width: 180px;  /* можно больше/меньше */
+  height: 180px;
   margin-right: 10px;
 }
 
-/* Роль, если иконка белая — дадим подложку */
+/* Роль. Если иконка белая - делаем фон иконки тёмным кругом */
 .role-container {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  gap: 10px; /* небольшой зазор */
 }
 
+/* Обёртка под иконку роли, чтобы белая картинка не терялась на белом фоне */
 .role-icon {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   background-color: #2f3241; /* Тёмный фон */
-  border-radius: 8px;
-  padding: 5px;
-  box-sizing: content-box;
-  /* Или, вместо этого, используйте тень:
-     filter: drop-shadow(0 0 3px #000);
-  */
+  border-radius: 50%;        /* Делаем круг, если хотите квадрат - уберите */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* небольшая внутренняя обводка */
+  box-shadow: 0 0 4px rgba(0,0,0,0.4);
 }
 
-/* Параметры Situation / Status */
+.role-icon img {
+  max-width: 70%;  /* чтобы иконка помещалась внутри */
+  height: auto;
+}
+
+/* Параметры (Situation / Status) */
 #detailsContainer p {
   margin: 10px 0;
   font-size: 1rem;
@@ -218,7 +223,7 @@ main {
   color: #2f3241;
 }
 
-/* YouTube */
+/* YouTube-видео */
 .youtube-container {
   margin-top: 20px;
   text-align: center;
@@ -231,7 +236,7 @@ main {
   border: none;
 }
 
-/* Кнопка "Publish Dumbass" в правом нижнем углу */
+/* Кнопка "Publish Dumbass" (фиксированная в правом нижнем углу) */
 .publish-button {
   position: fixed;
   bottom: 20px;
@@ -254,7 +259,7 @@ main {
   transform: scale(1.05);
 }
 
-/* Адаптив: уменьшение для экранов < 768px */
+/* Адаптив: уменьшение размеров при <768px */
 @media (max-width: 768px) {
   main {
     flex-direction: column;
@@ -275,12 +280,16 @@ main {
   }
 
   .rank-icon {
-    width: 80px;
-    height: 80px;
+    width: 140px;
+    height: 140px;
   }
 
   .role-icon {
-    width: 60px;
-    height: 60px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .role-icon img {
+    max-width: 60%;
   }
 }
