@@ -1,0 +1,271 @@
+/* 
+  Цвета ориентируемся на ваш скриншот:
+  - Шапка (header): тёмно-серый/чёрный (#1f1f28)
+  - Фон: светло-голубовато-серый (#d7deeb)
+  - Блоки заголовков (h2) и тёмные фоны: #2f3241 (или около)
+  - Текст: белый (#fff)
+  - Кнопка (Publish Dumbass): жёлтый (#ffbe00), при hover чуть светлее
+*/
+
+/* Сброс отступов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Фон страницы - светлый голубовато-серый */
+body {
+  font-family: Arial, sans-serif;
+  background: #d7deeb; 
+  color: #000; /* Основной цвет текста - чёрный */
+  min-height: 100vh; 
+}
+
+/* Шапка */
+header {
+  background: #1f1f28; /* Тёмно-серый/почти чёрный */
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Логотип + надпись */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff; /* Белый текст на тёмном фоне */
+}
+
+.logo-icon {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+/* Поле поиска */
+#search {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Основная область: две колонки */
+main {
+  display: flex;
+  padding: 20px;
+}
+
+/* Левая колонка: список + пагинация */
+.player-list {
+  width: 30%;
+  padding: 20px;
+  /* При желании можно дать рамку или фон */
+  /* background: #ffffffcc; Пример полупрозрачного, если нужно */
+  border-radius: 8px;
+  margin-right: 10px;
+  min-height: 70vh;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  position: relative; /* Для пагинации */
+}
+
+/* Заголовок в левой колонке */
+.player-list h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  background: #2f3241; /* Тёмный фон */
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Список игроков */
+.player-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Элемент списка (никнейм) */
+.player-list li {
+  background: #f0f2f5;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  color: #000;
+}
+
+.player-list li:hover {
+  background-color: #cfd6e2; 
+}
+
+/* Пагинация */
+.pagination {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.pagination button {
+  background: #2f3241; 
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #ffbe00; 
+  color: #000; 
+}
+
+.pagination button:hover {
+  background: #3b3f51; 
+}
+
+.pagination-dots {
+  color: #333;
+  padding: 6px 10px;
+  font-size: 1rem;
+}
+
+/* Правая колонка: карточка игрока */
+.player-details {
+  flex: 1;
+  padding: 20px;
+  min-height: 70vh;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  background: #f0f2f5; 
+}
+
+.player-details h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  background: #2f3241;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Карточка внутри */
+#detailsContainer {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 20px;
+  min-height: 200px;
+  color: #000;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Никнейм (крупный) */
+.nickname {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2f3241;
+  margin-bottom: 10px;
+}
+
+/* Ранг */
+.nickname-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ranks {
+  margin-left: 20px;
+}
+
+.rank-icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+}
+
+/* Роль */
+.role-container {
+  margin-bottom: 15px;
+}
+
+.role-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Параметры situation/status */
+#detailsContainer p {
+  margin: 10px 0;
+}
+
+#detailsContainer strong {
+  font-weight: bold;
+  color: #2f3241;
+}
+
+/* YouTube */
+.youtube-container {
+  margin-top: 20px;
+  text-align: center;
+}
+.youtube-container iframe {
+  width: 100%;
+  max-width: 560px;
+  height: 315px;
+  border: none;
+}
+
+/* Кнопка в правом нижнем углу */
+.publish-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffbe00;
+  color: #000;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.publish-button:hover {
+  background-color: #ffc733;
+  transform: scale(1.05);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  .player-list, .player-details {
+    width: 100%;
+    margin: 0 0 10px 0;
+    position: static;
+  }
+  
+  .pagination {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    justify-content: center;
+  }
+}

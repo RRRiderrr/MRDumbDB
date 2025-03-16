@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DumbDB</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="images/rivals-logo.png" />
+</head>
+<body>
+  <!-- Шапка (тёмная полоса сверху) -->
+  <header>
+    <div class="logo">
+      <!-- Логотип -->
+      <img src="images/rivals-logo.png" alt="Marvel Rivals Logo" class="logo-icon" />
+      DumbDB
+    </div>
+    <!-- Поисковое поле -->
+    <input
+      id="search"
+      type="text"
+      placeholder="Search player..."
+      oninput="searchPlayer()"
+    />
+  </header>
+
+  <!-- Двухколоночная структура -->
+  <main>
+    <!-- Левая колонка: список игроков + пагинация -->
+    <div class="player-list">
+      <h2>Player List</h2>
+      <ul id="playerList"></ul>
+      <div id="pagination" class="pagination"></div>
+    </div>
+
+    <!-- Правая колонка: карточка деталей -->
+    <div class="player-details" id="playerDetails">
+      <h2>Player Details</h2>
+      <div id="detailsContainer">Select a player to see details.</div>
+    </div>
+  </main>
+
+  <!-- Кнопка в правом нижнем углу -->
+  <a
+    href="https://forms.gle/WU14dkTzKLREYG8a9"
+    target="_blank"
+    class="publish-button"
+  >
+    Publish Dumbass
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
