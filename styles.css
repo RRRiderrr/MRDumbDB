@@ -62,7 +62,6 @@ main {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Заголовок в левой колонке */
 .player-list h2 {
   font-size: 1.4rem;
   margin-bottom: 10px;
@@ -179,14 +178,14 @@ main {
   margin-left: 15px;
 }
 
-/* Увеличиваем иконку ранга (в "несколько раз") */
+/* Увеличиваем иконку ранга ещё сильнее */
 .rank-icon {
-  width: 180px;  /* можно больше/меньше */
-  height: 180px;
+  width: 220px; 
+  height: 220px;
   margin-right: 10px;
 }
 
-/* Роль. Если иконка белая - делаем фон иконки тёмным кругом */
+/* Роль (иконка белая, значит делаем тёмный круг) */
 .role-container {
   margin-bottom: 15px;
   display: flex;
@@ -194,21 +193,19 @@ main {
   gap: 10px; /* небольшой зазор */
 }
 
-/* Обёртка под иконку роли, чтобы белая картинка не терялась на белом фоне */
 .role-icon {
-  width: 120px;
-  height: 120px;
+  width: 60px;  /* уменьшили, как вы просили */
+  height: 60px;
   background-color: #2f3241; /* Тёмный фон */
-  border-radius: 50%;        /* Делаем круг, если хотите квадрат - уберите */
+  border-radius: 50%;        /* Делаем круг */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* небольшая внутренняя обводка */
   box-shadow: 0 0 4px rgba(0,0,0,0.4);
 }
 
 .role-icon img {
-  max-width: 70%;  /* чтобы иконка помещалась внутри */
+  max-width: 80%;
   height: auto;
 }
 
@@ -279,17 +276,18 @@ main {
     justify-content: center;
   }
 
+  /* Чуть уменьшаем для маленьких экранов */
   .rank-icon {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
   }
 
   .role-icon {
-    width: 90px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
   }
 
   .role-icon img {
-    max-width: 60%;
+    max-width: 70%;
   }
 }
